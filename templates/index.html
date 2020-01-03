@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Posty</title>
+    <link rel="stylesheet" href="{{url_for('static',filename='style.css')}}">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul class="navbar">
+                <li>
+                    <h1>Posty</h1>
+                </li>
+                <li>
+                    <a href="{{url_for('post_add')}}">NEW</a>
+                </li>
+
+            </ul>
+        </nav>
+    
+
+        
+    </header>
+    
+    <main>
+
+        {%for post in posts%}
+
+        <article >
+            
+            <div>
+                
+                <img src="{{post.photo_url}}">
+              
+            </div>
+
+            <div class="main_content">
+                <h2>{{post.name}}</h2>
+                <p>{{post.body}}</p>
+            </div>
+            
+            
+            <div class="content">
+                <a href="{{url_for('post_update',id=post.id)}}">Edit</a> |
+                <a href="{{url_for('post_delete',id=post.id)}}">Delete</a>
+            </div>
+
+      
+        </article>
+        {% endfor %}
+    </main>    
+       
+    
+    
+</body>
+</html>
